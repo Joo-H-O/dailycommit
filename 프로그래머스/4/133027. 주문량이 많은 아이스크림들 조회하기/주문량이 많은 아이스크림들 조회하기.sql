@@ -1,0 +1,10 @@
+SELECT FLAVOR
+FROM (
+        SELECT * FROM FIRST_HALF
+        UNION ALL
+        SELECT * FROM JULY
+    ) poo #UNION ALL로 테이블 합치기(중복 허용)
+GROUP BY FLAVOR
+ORDER BY SUM(TOTAL_ORDER) DESC #총 주문량 많은 순으로 정렬
+LIMIT 3 #상위 3개 맛 RETURN
+
