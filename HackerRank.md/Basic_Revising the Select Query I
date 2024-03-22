@@ -1,6 +1,0 @@
-SELECT *
-FROM CITY
-WHERE CountryCode LIKE 'USA' AND 
-    POPULATION >= 100000
-
-Problem - https://www.hackerrank.com/challenges/revising-the-select-query/problem?isFullScreen=true
