@@ -1,0 +1,7 @@
+-- 코드를 작성해주세요
+SELECT DEP.DEPT_ID, DEP.DEPT_NAME_EN, 
+    ROUND(AVG(EMP.SAL), 0) AS AVG_SAL #평균연봉은 소수점 첫째 자리에서 반올림하고 컬럼명은 AVG_SAL
+FROM HR_EMPLOYEES EMP
+LEFT JOIN HR_DEPARTMENT DEP ON EMP.DEPT_ID = DEP.DEPT_ID
+GROUP BY DEP.DEPT_ID #부서별 평균 연봉
+ORDER BY 3 DESC #평균 연봉을 기준으로 내림차순 정렬
