@@ -1,0 +1,7 @@
+SELECT ROUND(MAX(LAT_N), 4) #The MEDIAN is the higher half of a data set from the lower half
+FROM (
+    SELECT *, NTILE(2) OVER (ORDER BY LAT_N) AS Tile #Divided in 2 groups
+    FROM STATION) Sub
+WHERE Tile = 1
+
+Problem - https://www.hackerrank.com/challenges/weather-observation-station-20/problem?isFullScreen=true
