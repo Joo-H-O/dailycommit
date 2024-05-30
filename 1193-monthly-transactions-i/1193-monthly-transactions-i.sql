@@ -1,9 +1,9 @@
 # Write your MySQL query statement below
-SELECT DATE_FORMAT(trans_date, '%Y-%m') AS month, #Return Year-month
-        country,
-        COUNT(state) AS trans_count, #number of transactions
-        COUNT(CASE WHEN state LIKE 'approved' THEN 1 END) AS approved_count, #number of approved transactions
-        SUM(amount) AS trans_total_amount, #total amount
-        IFNULL(SUM(CASE WHEN state LIKE 'approved' THEN amount END), 0) AS approved_total_amount #total amount
+SELECT LEFT(trans_date, 7) AS month, 
+    country, 
+    COUNT(id) AS trans_count, 
+    IFNULL(SUM(CASE WHEN state = 'approved' THEN 1 END), 0) AS approved_count, #Count only approval state, Null = 0
+    SUM(amount) AS trans_total_amount,
+    IFNULL(SUM(CASE WHEN state = 'approved' THEN amount END), 0) AS approved_total_amount #Sum only approval state, Null = 0
 FROM Transactions
-GROUP BY month, country #find for each month and country
+GROUP BY LEFT(trans_date, 7), country #for each month and country
